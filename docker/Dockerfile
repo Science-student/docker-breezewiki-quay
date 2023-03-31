@@ -9,6 +9,9 @@ RUN apt-get update && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
+
+
+
 # Download and extract the Breezewiki distribution
 RUN wget -qO- https://docs.breezewiki.com/files/breezewiki-dist.tar.gz | tar xz -C /app
 
