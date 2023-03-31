@@ -5,7 +5,7 @@ RUN apt update -y && apt upgrade -y \
     && apt autoclean -y \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/* \
-    && https://docs.breezewiki.com/files/breezewiki-dist.tar.gz
+    && wget https://docs.breezewiki.com/files/breezewiki-dist.tar.gz
     && ./breezewiki-dist/bin/dist
 EXPOSE 10416
 CMD ["racket", "dist.rkt"]
