@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Install dependencies and clean up package manager cache
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git wget && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y git wget && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
