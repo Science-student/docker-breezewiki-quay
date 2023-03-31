@@ -1,15 +1,19 @@
-FROM ubuntu:latest
+FROM debian:latest
 
 WORKDIR /app
 
-RUN apt update -y && apt upgrade -y \
-    && apt install -y --no-install-recommends git wget \
-    && apt autoclean -y \
-    && apt autoremove -y \
-    && rm -rf /var/lib/apt/lists/* \
-    && wget https://docs.breezewiki.com/files/breezewiki-dist.tar.gz \
-    && tar xvzf breezewiki-dist.tar.gz 
+# Install dependencies and clean up package manager cache
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git wget && \
+    apt-get autoclean && \
+    apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/*
+
+# Download and extract the Breezewiki distribution
+RUN wget -qO- https://docs.breezewiki.com/files/breezewiki-dist.tar.gz | tar xz -C /app
+
+# Expose the Breezewiki server port
 EXPOSE 10416
 
-CMD ["./breezewiki-dist/bin/dist"]
-
+# Start the Breezewiki server
+CMD ["/app/breezewiki-dist/bin/dist"]
