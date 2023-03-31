@@ -1,4 +1,4 @@
-FROM racket/racket:8.8
+FROM ubuntu:latest
 
 WORKDIR /app
 
