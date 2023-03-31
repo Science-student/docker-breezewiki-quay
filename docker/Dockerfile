@@ -8,10 +8,8 @@ RUN apt update -y && apt upgrade -y \
     && apt autoremove -y \
     && rm -rf /var/lib/apt/lists/* \
     && wget https://docs.breezewiki.com/files/breezewiki-dist.tar.gz \
-    && tar xvzf breezewiki-dist.tar.gz \
-    && ./breezewiki-dist/bin/dist
-
+    && tar xvzf breezewiki-dist.tar.gz 
 EXPOSE 10416
 
-CMD ["racket", "dist.rkt"]
+CMD ["./breezewiki-dist/bin/dist"]
 
